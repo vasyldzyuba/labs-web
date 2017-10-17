@@ -1,26 +1,61 @@
 <!DOCTYPE HTML>
 <html>
-<link href="style.css" rel="stylesheet" type="text/css" >
-
-<body>
-
-	<ul>
-	    <li><a href="#">Головна</a></li>
-	    <li><a href="#">Новини</a>
-	    <li><a href="#">Студентам</a>
-	        <ul>
-	            <li><a href="#">Програма</a></li>
-	            <li><a href="#">Лабораторна</a></li>
-	            <li><a href="#">Література</a></li>
-	        </ul>
-	    </li>  
-	    <li><a href="#">Відгуки</a></li>
-	    <li><a href="#">Контакти</a></li>
-	    <li><a href="#">Admin</a></li>
-	</ul>
-
-	<div><p class="p1">Про предмет</p>
-		<p>Мета:поглиблення студентами юридичного факультету теоретичних знань і формування у них практичних умінь та навичок застосування міжнародних актів та іноземного законодавства в нотаріальній практиці, прийняття нотаріусами документів, складених за кордоном, оформленнянотаріусамидокументів для дії за кордоном та ознайомлення студентів із формами міжнародної співпраці у сфері
+  <script src="bootstrap-3.3.7-dist/jq/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap-theme.min.css">
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" type="text/css" >
+<body class="container-fluid con" >
+	<div class="header row">
+		<div class="logo col-lg-4 col-md-4 col-sm-2 col-xs-9">
+			<div class="logotext">SuperLogo</div>
+		</div>
+		<ul class="col-lg-8 col-md-8 col-sm-10 hidden-xs row" id="ul">
+			<li class="grow col-lg-2 col-md-2 col-sm-2 col-xs-0"><a href="index.html">Головна</a></li>
+			<li class="grow col-lg-2 col-md-2 col-sm-2 col-xs-0"><a href="news.html">Новини</a>
+			<li class="grow col-lg-2 col-md-2 col-sm-2 col-xs-0"><a href="#">Студентам</a>
+				<ul class="row">
+					<li class="col-lg-12 col-md-12 col-sm-12"><a href="#">Програма</a></li>
+					<li class="col-lg-12 col-md-12 col-sm-12" ><a href="#">Лабораторна</a></li>
+					<li class="col-lg-12 col-md-12 col-sm-12"><a href="#">Література</a></li>
+				</ul>
+			</li>  
+			<li class="grow col-lg-2 col-md-2 col-sm-2 col-xs-0"><a href="#">Відгуки</a></li>
+			<li class="grow col-lg-2 col-md-2 col-sm-2 col-xs-0"><a href="#">Контакти</a></li>
+			<li class="grow col-lg-2 col-md-2 col-sm-2 col-xs-0"><a href="#">Admin</a></li>
+		</ul>
+		<div class="minimenu hidden-lg hidden-md hidden-sm col-xs-3">
+		
+			<div class="img"></div>
+			
+			<ul class="col-xs-12 row" id="ul2">
+				<li class="grow col-xs-12"><a href="index.html">Головна</a></li>
+				<li class="grow col-xs-12"><a href="news.html">Новини</a>
+				<li class="grow col-xs-12"><a href="#">Студентам</a>
+					<ul class="row">
+						<li class="col-xs-10 center"><a href="#">Програма</a></li>
+						<li class="col-xs-10 center"><a href="#">Лабораторна</a></li>
+						<li class="col-xs-10 center"><a href="#">Література</a></li>
+					</ul>
+				</li>  
+				<li class="grow col-xs-12"><a href="#">Відгуки</a></li>
+				<li class="grow col-xs-12"><a href="#">Контакти</a></li>
+				<li class="grow col-xs-12"><a href="#">Admin</a></li>
+			</ul>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<br>
+	<br>
+	<div class="block">
+		Вітаємо на нашому сайті!
+	</div>
+	<br>
+	<br>
+	<div class="row content">
+	<div class="standart col-lg-12 col-md-12 col-sm-12 col-xs-12"><p class="p1">Про предмет</p>
+		<p>Мета:поглиблення студентами юридичного факультету теоретичних знань і формування у них практичних умінь та навичок застосування міжнародних актів та іноземного законодавства в нотаріальній практиці, прийняття нотаріусами документів, складених за кордоном, оформлення нотаріусами документів для дії за кордоном та ознайомлення студентів із формами міжнародної співпраці у сфері
 		нотаріату.</p>
 		<p>Предмет: міжнародні акти, іноземне законодавство, законодавство України про
 		нотаріат, цивільне процесуальне законодавство України, документи нотаріальної
@@ -33,28 +68,30 @@
 		права.
 		Місце у навчальному процесі - вибіркова, 1семестр.</p>
 	</div>
-
-	<div><p class="p1">Новини</p>
+	<div class="clearfix"></div>
+	<br>
+	<br>
+	<div class="standart col-lg-12 col-md-12 col-sm-12 col-xs-12" ><p class="p1">Новини</p>
 		<p>У результаті вивчення дисципліни «Застосування законодавства іноземних
 		держав в нотаріальній практиці» здобувач вищої освіти повинен:
 		знати:
 		- основні положення міжнародних актів, чинного законодавства України та
 		іноземного законодавства щодо вчинення нотаріальних дій;
-		- особливості прийняттянотаріусамиУкраїни документів, складених за кордоном
-		та процесуальний порядок оформленнянотаріусамидокументів для дії за кордоном;
+		- особливості прийняття нотаріусами України документів, складених за кордоном
+		та процесуальний порядок оформлення нотаріусами документів для дії за кордоном;
 		- особливості нотаріальних дій щодо забезпечення доказів, необхідних для
 		ведення справ в органах іноземних держав;
 		- особливості міжнародної співпраці у сфері нотаріату;
 		вміти:
-		- правильно застосовуватиміжнародніакти, чиннезаконодавствоУкраїни та
-		іноземнезаконодавствощодовчиненнянотаріальнихдій;
+		- правильно застосовувати міжнародні акти, чинне законодавство України та
+		іноземне законодавство щодо вчинення нотаріальних дій;
 		-
-		складатипроектинотаріальнихдокументівіззастосуваннямзаконодавстваіноземних
+		складати проекти нотаріальних документів із застосуванням законодавства іноземних
 		держав та документів для дії за кордоном;
 		- вчиняти дії щодо забезпечення доказів, необхідних для ведення справ в органах
 		іноземних держав;
-		- аналізувати практичні ситуації в нотаріальній практиці.
-		Декан</p></div>
+		- аналізувати практичні ситуації в нотаріальній практиці.</p></div>
+		</div>
 </body>
 
 <footer><CENTER>телефон +380353642464</CENTER></footer>
