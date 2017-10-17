@@ -1,82 +1,251 @@
+*{
+	padding: 0; 
+	margin: 0; 
+}
+@font-face {
+    font-family: League Gothic;
+    src: url(font/LeagueGothic-Regular.otf);
+}
+@font-face {
+    font-family: Open Sans Light;
+    src: url(font/OpenSansLight.ttf);
+}
+
+
 body {
   background-image: url(p1.jpg);
+/*
   background-repeat: no-repeat;
   background-size: 100%;
   background-attachment: fixed;
   background-position: center;
   background-color: #360f0c;
+*/
 
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 
-div {
+.header{
+	height: 50px;
+	width: 100%;
+	background: #360F0C;
+	position: fixed;
+	top: 0;
+	z-index: 1000;
+}
 
-  background-color: rgba(130, 90, 44, 0.25);
+.standart { 	
+	background-color: rgba(130, 90, 44, 0.7);
+	border-radius: 10px;
+/*	margin: 0 auto;*/
+	color: black;
 
+}
+/*//block which moves*/
+.block{
+	background: rgba(130, 90, 44, 0.7);
+	width: 100%;
+	animation-name: move;
+	animation-duration: 2s;
+	height: 75px;
+	margin-left: 0;
+	border-radius: 10px;
+	font-size: 50px;
+	text-align: center;
+	margin-top: 40px;
+	color: black;
+}
+
+/*animation of block which moves */
+@keyframes move{
+	0%{
+		margin-left: -100%;
+	}
+	100%{
+		margin-left: 0;
+	}
+}
+/*block with pic in news*/
+.gal{
+	background: url(books.jpg);
+	background-size: cover;
+	background-position: bottom;
+	width: 100%;
+	height: 175px;
+	border-radius: 10px;
+	margin-top: 40px;
 }
 
 p{
+/*
   margin-left: 200px;
   margin-right: 200px;
+*/
+	text-align: center;
   font-size: 20px;
   font-weight: bold;
+	padding: 10px;
 }
 
 .p1 {
-    margin-left: 500px;
-  
+/*    margin-left: 500px;*/
+  text-align: center;
   font-size: 40px;
   font-weight: bold;
   color: #360f0c;
 }
 
-
-ul {
-  list-style: none; 
-  margin: 0; 
-  padding-left: 0; 
-  margin-top:25px; 
-  background:#360f0c; 
-  height: 50px; 
+.clearfix{
+	clear: both;
 }
-a {
+
+.logo{
+	float: left;
+	height: 50px;
+	font-family: League Gothic;
+	font-size: 35px;
+	color:aliceblue;
+	text-shadow: 2px 1px 0px rgba(0, 0, 0, 1);
+}
+.logotext{
+	animation-name: logo;
+	animation-duration: 2s;
+}
+/*//animation for logo*/
+@keyframes logo{
+	0%{
+		margin-top: -100px;
+	}
+	100%{
+		margin-top: 0;
+	}
+}
+.minimenu .img{
+	float: right;
+	background: url(ham.png);
+/*	background: blue;*/
+	height: 50px;
+	width: 50px;
+	background-size: cover;
+	background-repeat: no-repeat;
+/*	background-attachment: fixed;*/
+	
+}
+.minimenu:hover #ul2{
+	display: block;
+}
+
+/*// menu*/
+#ul, #ul2 {
+/*	background: blue;
+	*/
+/*	border: 2px solid black;*/
+/*float: right;*/
+  	list-style: none; 
+/*  margin: 0; */
+/*  padding-left: 0; */
+	padding: 0;
+	margin: 0;
+  	background:#360f0c; 
+  	height: 50px; 
+	
+}
+#ul2{
+	margin-right: -20px;
+	display: none
+}
+#ul2 ul{
+	list-style: none;
+/*	font-size: 13px;*/
+}
+#ul2 ul li a{
+	  line-height:20px; 
+	position: relative;
+	right: -14px;
+}
+#ul ul{
+	list-style: none;
+}
+ul li a {
+
   text-decoration: none; 
   background:#570600; 
   color:#fff; 
-  padding:0px 15px; 
+/*  padding:0px 15px; */
   font-family: arial; 
   line-height:50px; 
   display: block; 
-  border-right: 1px solid #677B27; 
+/*  border-right: 1px solid #677B27; */
   -moz-transition: all 0.3s 0.01s ease; 
   -o-transition: all 0.3s 0.01s ease;
   -webkit-transition: all 0.3s 0.01s ease;
 }
-a:hover {
+
+/*
+tag = 1
+.class = 10
+#id = 100
+*/
+
+#ul li, #ul2 li{
+	margin: 0;
+	padding: 0;
+}
+ul li a{
+	color: white;
+	text-decoration: none;
+}
+ul li a:hover {
+	text-decoration: none;
+	color: white;
   background:#D43737;
 }
 li {
-  float:left; 
-  position:relative; 
+/*	background: green;*/
+	text-align: center;
+/*  float:left; */
+/*  position:relative; */
 }
      
     
     li > ul {
-        position:absolute;
-        top:25px;
+/*        position:absolute;*/
+/*        top:50px;*/
         display:none;   
     }
      
     
     li:hover > ul {
         display:block; 
-        width:250px;        
+/*        width:250px;        */
     }
    li:hover > ul > li {
         float:none; 
     }
+
 
   footer{
     color: white;
     background-color: #360f0c;
 
   }
+/*збільшення тексту при наведенні*/
+  .grow:hover {
+/*  -webkit-transform: scale(0.8);*/
+/*  -ms-transform: scale(1.2);*/
+/*  transform: scale(1.2);*/
+	  font-size: 1.2em;
+	  
+}
+/*адаптивність*/
+@media screen and (max-width:700px){
+	.block{
+		font-size: 30px;
+		height: 40px;
+	}
+	p{
+		font-size: 15px;
+	}
+}
