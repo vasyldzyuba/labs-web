@@ -4,23 +4,20 @@
 }
 @font-face {
     font-family: League Gothic;
-    src: url(font/LeagueGothic-Regular.otf);
+    src: url(../font/LeagueGothic-Regular.otf);
 }
 @font-face {
     font-family: Open Sans Light;
-    src: url(font/OpenSansLight.ttf);
+    src: url(../font/OpenSansLight.ttf);
 }
 
 
 body {
-  background-image: url(p1.jpg);
-
-
+  	background-image: url(../image/p1.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
-
 .header{
 	height: 50px;
 	width: 100%;
@@ -33,7 +30,9 @@ body {
 .standart { 	
 	background-color: rgba(130, 90, 44, 0.7);
 	border-radius: 10px;
+/*	margin: 0 auto;*/
 	color: black;
+	text-align: center;
 
 }
 /*//block which moves*/
@@ -62,7 +61,7 @@ body {
 }
 /*block with pic in news*/
 .gal{
-	background: url(books.jpg);
+	background: url(../image/books.jpg);
 	background-size: cover;
 	background-position: bottom;
 	width: 100%;
@@ -70,8 +69,21 @@ body {
 	border-radius: 10px;
 	margin-top: 40px;
 }
-
+.errorN{
+	color: red;
+	font-weight: 800;
+}
+/*styles for h4*/
+h4{
+	font-weight: 700;
+	color:aliceblue;
+	text-shadow: 2px 2px black;
+}
 p{
+/*
+  margin-left: 200px;
+  margin-right: 200px;
+*/
 	text-align: center;
   font-size: 20px;
   font-weight: bold;
@@ -113,11 +125,13 @@ p{
 }
 .minimenu .img{
 	float: right;
-	background: url(ham.png);
+	background: url(../image/ham.png);
+/*	background: blue;*/
 	height: 50px;
 	width: 50px;
 	background-size: cover;
 	background-repeat: no-repeat;
+/*	background-attachment: fixed;*/
 	
 }
 .minimenu:hover #ul2{
@@ -182,7 +196,6 @@ ul li a:hover {
 }
 li {
 	text-align: center;
-
 }
      
     
@@ -193,7 +206,6 @@ li {
     
     li:hover > ul {
         display:block; 
-        
     }
    li:hover > ul > li {
         float:none; 
@@ -205,12 +217,70 @@ li {
     background-color: #360f0c;
 
   }
-/*increase text while hovering*/
+/*збільшення тексту при наведенні*/
   .grow:hover {
 	  font-size: 1.2em;
 	  
 }
-/*adaptability*/
+
+.news_block{
+	height: 35vw;
+	background-color:darkgray;
+	border-radius: 10px;
+	border: 20px solid rgba(0, 0, 0, .0);
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+}
+.flex_block{
+/*
+	display: flex;
+	justify-content: space-around;
+*/
+}
+.new_zag{
+	height: 4vw;
+	font-size: 1.7vw;
+}
+.news_text{
+	overflow:auto;
+	height: 10vw;
+	font-size: 1vw;
+}
+.img_new{
+	width: 20vw;
+	height: 14vw;
+	background-size: contain;
+	margin-top: 5%;
+/*	background: blue;*/
+}
+iframe{
+	width: 90%;
+	height: 50vh;
+}
+.author{
+	font-size: 2em;
+}
+.date{
+	color: dimgray;
+}
+.review{
+	text-align: left;
+	background: white;
+	border-radius: 10px;
+	padding: 10px;
+}
+.textarea{
+	overflow: none;
+	width: 100%;
+	height: 10vw;
+}
+.my-btn{
+	float: right;
+}
+td{
+	text-align: left;
+}
+/*адаптивність*/
 @media screen and (max-width:700px){
 	.block{
 		font-size: 30px;
@@ -218,5 +288,19 @@ li {
 	}
 	p{
 		font-size: 15px;
+	}
+}
+@media screen and (max-width:991px){
+	.flex_block{
+		display: block;
+/*		justify-content: space-around;*/
+	}
+	.news_text{
+		overflow:auto;
+		height: 10vw;
+		font-size: 1.5vw;
+	}
+	.img_new{
+		margin-top: 2%;
 	}
 }
