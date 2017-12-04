@@ -1,0 +1,23 @@
+CACHE MANIFEST
+news.html
+contacts.html
+reviews.html
+index.html
+error.html
+bootstrap-3.3.7-dist/jq/jquery-3.2.1.min.js
+bootstrap-3.3.7-dist/css/bootstrap.min.css
+bootstrap-3.3.7-dist/css/bootstrap-theme.min.css
+bootstrap-3.3.7-dist/js/bootstrap.min.js
+
+js/jquery-3.2.1.min.js
+js/my.js 
+js/angular.min.js
+
+css/style.css
+image/ham.png
+image/p1.jpg
+font/LeagueGothic-Regular.otf
+NETWORK:
+
+
+FALLBACK:

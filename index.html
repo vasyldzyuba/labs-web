@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html manifest="all.cache" ng-app="app">
 	<head>
 		<script src="bootstrap-3.3.7-dist/jq/jquery-3.2.1.min.js"></script>
 		<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
@@ -7,8 +7,10 @@
 		<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="css/style.css" rel="stylesheet" type="text/css" >
+  		<script src="js/angular.min.js"></script>
+   		<script src="js/my.js"></script>
     </head>
-<body class="container-fluid con" >
+<body class="container-fluid con">
 	<div class="header row">
 		<div class="logo col-lg-4 col-md-4 col-sm-2 col-xs-9">
 			<div class="logotext">SuperLogo</div>
@@ -19,13 +21,13 @@
 			<li class="grow col-lg-2 col-md-2 col-sm-2 col-xs-0"><a href="#">Студентам</a>
 				<ul class="row">
 					<li class="col-lg-12 col-md-12 col-sm-12"><a href="#">Програма</a></li>
-					<li class="col-lg-12 col-md-12 col-sm-12" ><a href="#">Лабораторна</a></li>
+					<li class="col-lg-12 col-md-12 col-sm-12" ><a href="lab.html">Лабораторна</a></li>
 					<li class="col-lg-12 col-md-12 col-sm-12"><a href="#">Література</a></li>
 					<li class="col-lg-12 col-md-12 col-sm-12"><a href="curriculum.html">Начальний план</a></li>
 				</ul>
 			</li>  
 			<li class="grow col-lg-2 col-md-2 col-sm-2 col-xs-0"><a href="reviews.html">Відгуки</a></li>
-			<li class="grow col-lg-2 col-md-2 col-sm-2 col-xs-0"><a href="#">Контакти</a></li>
+			<li class="grow col-lg-2 col-md-2 col-sm-2 col-xs-0"><a href="contacts.html">Контакти</a></li>
 			<li class="grow col-lg-2 col-md-2 col-sm-2 col-xs-0"><a href="admin.html">Admin</a></li>
 		</ul>
 		<div class="minimenu hidden-lg hidden-md hidden-sm col-xs-3">
@@ -38,13 +40,13 @@
 				<li class="grow col-xs-12"><a href="#">Студентам</a>
 					<ul class="row">
 						<li class="col-xs-10 center"><a href="#">Програма</a></li>
-						<li class="col-xs-10 center"><a href="#">Лабораторна</a></li>
+						<li class="col-xs-10 center"><a href="lab.html">Лабораторна</a></li>
 						<li class="col-xs-10 center"><a href="#">Література</a></li>
 						<li class="col-xs-10 center"><a href="curriculum.html">Начальний план</a></li>
 					</ul>
 				</li>  
 				<li class="grow col-xs-12"><a href="reviews.html">Відгуки</a></li>
-				<li class="grow col-xs-12"><a href="#">Контакти</a></li>
+				<li class="grow col-xs-12"><a href="contacts.html">Контакти</a></li>
 				<li class="grow col-xs-12"><a href="admin.html">Admin</a></li>
 			</ul>
 		</div>
