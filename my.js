@@ -2,11 +2,20 @@
 const app = angular.module('app', []);
 
 const link = 'http://localhost:8000';
+setInterval(function(){
+    if(!navigator.onLine){
+        var interval = setInterval(function(){
+            if(navigator.onLine){
+                clearInterval(interval);
+                window.location=window.location;
+            }
 
+        },1000);
+    }
+},1000)
 //контролер відгуків
 app.controller('Ctrl', function($scope, $http){
 	if(location.href == link+'/reviews.html'){
-//	alert('lol');
 		//перевірка на онлайн
 		if(navigator.onLine){
 			//пост запит на отримання відгуків
@@ -21,7 +30,7 @@ app.controller('Ctrl', function($scope, $http){
 						obj.name = localStorage.getItem('name'+i);
 						obj.date = localStorage.getItem('date'+i);
 						obj.text = localStorage.getItem('text'+i);
-						//надсилаємо новий видгук з локалсторедж
+						//надсилаємо новий відгук з локалсторедж
 						$http.post(link + '/addreviews', obj)
 						.then(function successCallback(response) {
 							
@@ -31,7 +40,7 @@ app.controller('Ctrl', function($scope, $http){
 								.then(function successCallback(response) {
 								 //отримали відгуки
 									$scope.reviews = response.data;
-								 //піхаємо їх в локалсторедж
+								 //відсилаємо їх в локалсторедж
 									localStorage.setItem('reviewslength', $scope.reviews.length);
 									for(var i = 0; i<$scope.reviews.length; i++){
 										localStorage.setItem('name'+i, $scope.reviews[i].name);
@@ -48,7 +57,7 @@ app.controller('Ctrl', function($scope, $http){
 					}
 					
 				}else{
-					//піхаємо в локалсторедж відгуки
+					//відсилаємо в локалсторедж відгуки
 					localStorage.setItem('reviewslength', $scope.reviews.length);
 					for(var i = 0; i<$scope.reviews.length; i++){
 						localStorage.setItem('name'+i, $scope.reviews[i].name);
@@ -64,7 +73,7 @@ app.controller('Ctrl', function($scope, $http){
 		}else{
 			// це виконається якщо офлайн
 			$scope.reviews = [];
-			//дістаємо дані з коласторедж
+			//дістаємо дані з локалсторедж
 			for(var i = 0; i<localStorage.getItem('reviewslength'); i++){
 				var obj = {};
 				obj.name = localStorage.getItem('name'+i);
@@ -114,7 +123,7 @@ app.controller('Ctrl', function($scope, $http){
 					$http.post(link + '/read-reviews')
 						.then(function successCallback(response) {
 							$scope.reviews = response.data;
-							//піхаємо відгуки в локалсторедж
+							//відсилаємо відгуки в локалсторедж
 							localStorage.setItem('reviewslength', $scope.reviews.length);
 							for(var i = 0; i<$scope.reviews.length; i++){
 								localStorage.setItem('name'+i, $scope.reviews[i].name);
@@ -157,17 +166,102 @@ app.controller('Ctrl', function($scope, $http){
 	});
 //контролер новин
 app.controller('newsCtrl', function($scope, $http){
-//	if(location.href == link+'/news.html'){
+
 	//перевірка на онлайн
 	if(navigator.onLine){
 		//пост запит який дістає новини
 			$http.post(link + '/read-news')
 				.then(function successCallback(response) {
 				$scope.newsarr = response.data;
+				if($scope.newsarr.length < localStorage.getItem('newslength')){
+					for(i = $scope.newsarr.length; i<localStorage.getItem('newslength'); i++){
+						var obj = {};
+						obj.headline = localStorage.getItem('headline');
+						obj.text = localStorage.getItem('textn');
+						//надсилаємо нову новину з локалсторедж
+						$http.post(link + '/addnews', obj)
+							.then(function successCallback(response) {
+							var cId=response.data;
+							console.log(cId[0].id);
+							cId = cId[0].id;
+							//додає картинку
+//							if($scope.myFile != undefined){
+								var fd = localStorage.getItem('img');
+
+								//це додає шлях до картинки в бд
+								$http.post(link + '/addnameofimg'+ cId).then(function successCallback(response) {
+									//а це додає картинку в папку
+									$http.post(link + '/images', fd, {
+										transformRequest: angular.identity
+										, headers: {
+											'Content-Type': undefined
+										}
+									}).then(function successCallback() {
+										console.log("Uploaded!");
+										$http.post(link + '/read-news')
+										.then(function successCallback(response) {
+										$scope.newsarr = response.data;
+											localStorage.setItem('newslength', $scope.newsarr.length);
+											for(var i = 0; i<$scope.newsarr.length; i++){
+												localStorage.setItem('img'+i, $scope.newsarr[i].img);
+												localStorage.setItem('headline'+i, $scope.newsarr[i].headline);
+												localStorage.setItem('textn'+i, $scope.newsarr[i].text);
+											}
+										}, function errorCallback(response) {
+											console.log("ERROR!! "+response.error);
+										});
+//										$('#addZag').val('');
+//										$('#addN1').val('');
+//										$('#addN2').val('');
+//										tmppath="";
+//										$('#inputFile').val("");
+//										alert('Вашу новину успішно опубліковано!!!');
+									}, function errorCallback(response) {
+										console.log("Error!!!" + response.err);
+									});
+								}, function errorCallback(response) {
+									console.log("Error!!!" + response.err);
+								});
+//							}
+						}, function errorCallback(response) {
+							console.log("Error!!!" + response.err);
+						});
+					}
+					
+				}else{
+					localStorage.setItem('newslength', $scope.newsarr.length);
+					for(var i = 0; i<$scope.newsarr.length; i++){
+						localStorage.setItem('img'+i, $scope.newsarr[i].img);
+						localStorage.setItem('headline'+i, $scope.newsarr[i].headline);
+						localStorage.setItem('textn'+i, $scope.newsarr[i].text);
+					}
+				}
+				
 			}, function errorCallback(response) {
 				console.log("ERROR!! "+response.error);
 			});
 			
+		}else{
+			$scope.newsarr = [];
+			//дістаємо дані з локалсторедж
+            var lll = parseInt(localStorage.getItem('newslength'))-1
+            if(localStorage.getItem('textn'+lll) == null){
+                for(var i = 0; i<lll; i++){
+                    var obj = {};
+                    obj.name = localStorage.getItem('img'+i);
+                    obj.headline = localStorage.getItem('headline'+i);
+                    obj.text = localStorage.getItem('textn'+i);
+                    $scope.newsarr.push(obj);
+                }
+            }else{
+                for(var i = 0; i<localStorage.getItem('newslength'); i++){
+                    var obj = {};
+                    obj.name = localStorage.getItem('img'+i);
+                    obj.headline = localStorage.getItem('headline'+i);
+                    obj.text = localStorage.getItem('textn'+i);
+                    $scope.newsarr.push(obj);
+                }
+            }
 		}
 
 })
@@ -215,6 +309,7 @@ app.controller('addNewsCtrl', function($scope, $http){
 				headline: zag,
 				text: n2
 			}
+			if(navigator.onLine){
 			//пост запит відправляє в бд новину
 			$http.post(link + '/addnews', obj)
 				.then(function successCallback(response) {
@@ -225,7 +320,7 @@ app.controller('addNewsCtrl', function($scope, $http){
 				if($scope.myFile != undefined){
 					var fd = new FormData();
 					fd.append(cId, $scope.myFile);
-//					console.log(fd);
+
 					//це додає шлях до картинки в бд
 					$http.post(link + '/addnameofimg'+ cId).then(function successCallback(response) {
 						//а це додає картинку в папку
@@ -252,6 +347,19 @@ app.controller('addNewsCtrl', function($scope, $http){
 			}, function errorCallback(response) {
 				console.log("Error!!!" + response.err);
 			});
+			}else{
+				if($scope.myFile != undefined){
+					var newimg = parseInt(localStorage.getItem('newslength'))+1;
+					
+					var fd = new FormData();
+					fd.append(newimg, $scope.myFile);
+					localStorage.setItem('img', fd);
+					localStorage.setItem('headline', obj.headline);
+					localStorage.setItem('textn', obj.text);
+					localStorage.setItem('newslength', newimg)
+					alert("Вашу новину закинуто в localStorage!");
+				}
+			}
 			
 		}
 	})
